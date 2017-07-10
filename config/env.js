@@ -6,7 +6,7 @@ const apiBaseUrl = {
 
 const pusherAppKey = {
   staging: 'ce5c19b1b1625e9abace',
-  production: '2364df9cc5d7b637fb5d',
+  production: '843e8669f81757d7abc3',
 }
 
 // Destructure API and NODE_ENV for use in fallback/profiles declared above
