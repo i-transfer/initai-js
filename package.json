@@ -20,7 +20,7 @@
     "prettier-dry-run": "prettier --single-quote --trailing-comma es5 --no-semi --parser flow \"src/**/*.js\" -l --debug-check",
     "precommit": "lint-staged",
     "prepush": "yarn test",
-    "prepublishOnly": "yarn test && yarn build:production",
+    "prepublish": "yarn test && yarn build:production",
     "version": "./tasks/updateChangelog.js && git add CHANGELOG.md"
   },
   "files": [
