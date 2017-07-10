@@ -1,6 +1,8 @@
 # Init.ai JS
 
 [![CircleCI](https://circleci.com/gh/init-ai/initai-js/tree/master.svg?style=svg)](https://circleci.com/gh/init-ai/initai-js/tree/master)
+[![NPM version](https://img.shields.io/npm/v/initai-js.svg)](https://www.npmjs.com/package/initai-js)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](#badge)
 
 A JavaScript library for building rich experiences on top of the [Init.ai](https://init.ai) platform.
 
@@ -40,8 +42,6 @@ This library is in an early phase of development, but is suitable for production
 ```bash
 yarn add initai-js
 ```
-
-> **Note:** This package is not yet available on `npm`
 
 ### API Client only:
 
@@ -84,10 +84,8 @@ createMonitorClient({ apiClient, userId: '123' }).then(monitorClient => {
 You can install `initai-js` using npm or yarn for use in a project using Webpack, browserify, rollup, etc.
 
 ```bash
-yarn add git+ssh://git@github.com/init-ai/initai-js
+yarn add initai-js
 ```
-
-> **Note:** `initai-js` is not yet distributed via `npm` during the private beta.
 
 Import the library into your project:
 
