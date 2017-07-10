@@ -30,6 +30,7 @@ This library is in an early phase of development, but is suitable for production
   + [Run in watch mode](#run-in-watch-mode)
   + [Building](#building)
   + [Testing](#testing)
+  + [Running as a linked module](#running-as-a-linked-module)
 * [Contributing](#contributing)
 </details>
 
@@ -518,6 +519,23 @@ To use `watch mode`:
 ```bash
 yarn test:watch
 ```
+
+### Running as a linked module
+
+Depending on your use case, it can often be helpful to develop against a local copy of `initai-js`. Since the default exports for this library are the artifats built to `dist`, you will need to use [linking](https://yarnpkg.com/en/docs/cli/link) and a specific development task to build to `dist` on change.
+
+```bash
+yarn link && \
+API=production yarn dev:linked
+```
+
+and then in your target project run:
+
+```bash
+yarn link initai-js
+```
+
+> **Note:** Make sure you are using the same version of Node.js in both projects for [linking](https://yarnpkg.com/en/docs/cli/link) to work properly.
 
 #### Run Flow type checker
 

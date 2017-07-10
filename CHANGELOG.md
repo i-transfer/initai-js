@@ -1,3 +1,7 @@
+# UNRELEASED
+
+* Add ability to use repo as [linked](https://yarnpkg.com/en/docs/cli/link) module
+
 # 0.0.2 / 2017-07-10
 
 * Fix `npm` build task
