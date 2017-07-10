@@ -1,0 +1,93 @@
+/**
+ * Globals
+ */
+* {
+  font-family: monospace;
+}
+
+body {
+  padding: 1em;
+}
+
+h1, h2 {
+  line-height: 1;
+  font-weight: normal;
+  color: #585b66;
+}
+
+
+.container {
+  border: 1px solid #eee; 
+  padding: 1em;
+  margin-bottom: 2em;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: #4c71ef;
+  color: #fff;
+  font-family: monospace;
+  padding: 0.6em 0.4em;
+  display: inline-block;
+  margin-bottom: 1em;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 231ms;
+  will-change: background-color;
+}
+
+button:hover {
+  background-color: #213e9e;
+  color: #d3d3d3;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5em;
+  background: #3a3a3a;
+  color: #fff;
+  padding: 0.2em 0.4em;
+  font-size: 0.8em;
+}
+
+
+/**
+ * Config
+ */
+.configEntry {
+  max-width: 440px;
+}
+
+#configContainer input[type="text"],
+#configContainer textarea {
+  width: 100%;
+  outline: none;
+  margin-bottom: 1em;
+  font-family: monospace;
+  display: block;
+  padding: 0.5em;
+}
+
+
+/**
+ * API Client
+ */
+#apiClientContainer select {
+  font-size: 0.8em;
+  display: block;
+  margin-bottom: 1em;
+}
+
+/**
+ * Suggested Messages
+ */
+.suggestedMessage {
+  white-space: pre;
+  padding: 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.suggestedMessage:last-child {
+  border-bottom: none;
+}

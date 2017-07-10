@@ -1,0 +1,78 @@
+{
+  "name": "initai-js",
+  "version": "0.0.0",
+  "description": "A JavaScript library for building rich experiences on top of the Init.ai platform.",
+  "main": "dist/initai.min.js",
+  "author": "Init.ai Developers <shared@init.ai>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "cleanDist": "rm -rf dist",
+    "dev": "yarn cleanDist && node tasks/development",
+    "build": "yarn cleanDist && webpack --progress",
+    "build:production": "./tasks/build.sh",
+    "test": "./tasks/test.sh",
+    "test:watch": "yarn test -- --verbose --watch",
+    "flow": "flow",
+    "lint": "eslint -c .eslintrc . --ignore-pattern dist --ignore-pattern flow-typed --ignore-pattern tasks --ignore-pattern dev",
+    "lint:precommit": "eslint -c .eslintrc --ignore-pattern dist --ignore-pattern flow-typed --ignore-pattern tasks --ignore-pattern dev",
+    "fmt": "prettier --single-quote --trailing-comma es5 --no-semi --parser flow --write \"src/**/*.js\"",
+    "fmt:precommit": "prettier --single-quote --trailing-comma es5 --no-semi --parser flow --write",
+    "prettier-dry-run": "prettier --single-quote --trailing-comma es5 --no-semi --parser flow \"src/**/*.js\" -l --debug-check",
+    "precommit": "lint-staged",
+    "prepush": "yarn test",
+    "prepublishOnly": "yarn test && yarn build:production",
+    "version": "./tasks/updateChangelog.js && git add CHANGELOG.md"
+  },
+  "files": [
+    "dist/",
+    "CHANGELOG.md",
+    "package.json",
+    "README.md"
+  ],
+  "lint-staged": {
+    "{dev,src}/**/*.js": [
+      "fmt:precommit",
+      "lint:precommit",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.68",
+    "@types/node": "^8.0.8",
+    "@types/pusher-js": "^3.0.29",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-preset-babili": "^0.1.4",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "babili": "^0.1.4",
+    "chalk": "^2.0.1",
+    "eslint": "^4.1.1",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "fetch-mock": "^5.12.1",
+    "flow-bin": "^0.49.1",
+    "handlebars-loader": "^1.5.0",
+    "html-webpack-include-assets-plugin": "^0.0.5",
+    "html-webpack-plugin": "^2.29.0",
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
+    "lint-staged": "^4.0.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "normalize.css": "^7.0.0",
+    "prettier": "^1.5.2",
+    "react-dev-utils": "^3.0.2",
+    "source-map-loader": "^0.2.1",
+    "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "uuid": "^3.1.0",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  },
+  "dependencies": {
+    "humps": "^2.0.1",
+    "pusher-js": "^4.1.0"
+  }
+}

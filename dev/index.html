@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{htmlWebpackPlugin.options.title}}</title>
+  </head>
+  <body>
+    <h1>Init.ai JS</h1>
+
+    <div id="configContainer" class="container">
+      <h2>Config</h2>
+      <p>This will override any config in the URL</p>
+
+      <div class="configEntry">
+        <label for="jwt">Remote Token</label>
+        <textarea id="jwt" name="" rows="3" placeholder="Remote token"></textarea>
+      </div>
+
+      <div class="configEntry">
+        <label for="userId">User ID</label>
+        <input id="userId" type="text" name="" placeholder="User id">
+      </div>
+    </div>
+
+    <div id="apiClientContainer" class="container">
+      <h2>API Client</h2>
+
+      <div id="apiClientTestContainer">
+        <label for="messageType">Message Type</label>
+        <select id="messageType">
+          <option value="text">Text</option>
+          <option value="image">Image</option>
+          <option value="postback-action">Postback</option>
+        </select>
+
+        <button id="sendMessage-end-user">Send Message as user</button>
+        <button id="sendMessage-agent">Send Message as agent</button>
+        <button id="sendMessage-app">Send Message as app</button>
+        <button id="sendEvent">Send event (via Inbound Events API)</button>
+        <button id="fetchMessages">Fetch messages</button>
+        <button id="fetchSuggestions">Fetch latest suggested messages</button>
+
+        <div id="outputLogger"></div>
+      </div>
+    </div>
+
+    <div id="monitorClientContainer" class="container">
+      <h2>Monitor Client</h2>
+
+      <button id="smButton">Trigger Suggested Message Event</button>
+    </div>
+
+    <div id="suggestedMessagesContainer" class="container">
+      <h2>Suggested Messages</h2>
+      <button id="pollForSuggestedMessages">Poll for suggested messages</button>
+
+      <div id="suggestedMessagesOutlet"></div>
+    </div>
+  </body>
+</html>

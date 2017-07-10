@@ -1,0 +1,10 @@
+{
+  "rootDir": "../../",
+  "collectCoverageFrom": ["src/**/*.js"],
+  "moduleFileExtensions": ["ts", "js"],
+  "testPathIgnorePatterns": ["<rootDir>/(build|dist|d.ts)/"],
+  "testMatch": [
+    "**/?(*.)(spec|test).(js|ts)?(x)",
+    "**/__tests__/*.(ts|tsx|js)"
+  ]
+}
