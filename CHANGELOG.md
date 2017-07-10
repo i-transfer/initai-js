@@ -1,4 +1,4 @@
-# UNRELEASED
+# 0.0.2 / 2017-07-10
 
 * Fix `npm` build task
 
