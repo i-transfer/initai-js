@@ -1,4 +1,4 @@
-# UNRELEASED
+# 0.0.3 / 2017-07-10
 
 * Add ability to use repo as [linked](https://yarnpkg.com/en/docs/cli/link) module
 
