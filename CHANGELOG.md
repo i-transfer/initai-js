@@ -1,4 +1,4 @@
-# UNRELEASED
+# 0.0.4 / 2017-07-11
 
 * Include `flow-typed` type definition in `npm` package distribution
 
