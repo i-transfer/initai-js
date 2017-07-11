@@ -26,6 +26,7 @@
   },
   "files": [
     "dist/",
+    "flow-typed/",
     "CHANGELOG.md",
     "package.json",
     "README.md"
