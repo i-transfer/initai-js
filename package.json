@@ -58,7 +58,6 @@
     "husky": "^0.14.3",
     "jest": "^20.0.4",
     "lint-staged": "^4.0.1",
-    "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "nodemon": "^1.11.0",
     "normalize.css": "^7.0.0",
@@ -73,6 +72,7 @@
   },
   "dependencies": {
     "humps": "^2.0.1",
+    "lodash": "^4.17.4",
     "pusher-js": "^4.1.0"
   }
 }
