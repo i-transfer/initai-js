@@ -5,6 +5,10 @@
   "main": "dist/initai.min.js",
   "author": "Init.ai Developers <shared@init.ai>",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:init-ai/initai-js"
+  },
   "scripts": {
     "cleanDist": "rm -rf dist",
     "dev": "yarn cleanDist && node tasks/development",
