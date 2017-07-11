@@ -2,18 +2,6 @@
 # yarn lockfile v1
 
 
-"@types/lodash@^4.14.68":
-  version "4.14.68"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.68.tgz#754fbab68bd2bbb69547dc8ce7574f7012eed7f6"
-
-"@types/node@^8.0.8":
-  version "8.0.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.8.tgz#0dc4ca2c6f6fc69baee16c5e928c4a627f517ada"
-
-"@types/pusher-js@^3.0.29":
-  version "3.0.29"
-  resolved "https://registry.yarnpkg.com/@types/pusher-js/-/pusher-js-3.0.29.tgz#c2d798a46a784799a236bb3aea396e165c53ec30"
-
 abab@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.3.tgz#b81de5f7274ec4e756d797cd834f303642724e5d"
