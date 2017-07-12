@@ -1,6 +1,6 @@
 {
   "name": "initai-js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A JavaScript library for building rich experiences on top of the Init.ai platform.",
   "main": "dist/initai.min.js",
   "author": "Init.ai Developers <shared@init.ai>",

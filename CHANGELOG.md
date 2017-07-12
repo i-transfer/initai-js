@@ -1,4 +1,4 @@
-# UNRELEASED
+# 0.0.5 / 2017-07-12
 
 * Expose envrionment configuration via `API_BASE_URL`
 
