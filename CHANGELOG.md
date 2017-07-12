@@ -1,3 +1,7 @@
+# UNRELEASED
+
+* Expose envrionment configuration via `API_BASE_URL`
+
 # 0.0.4 / 2017-07-11
 
 * Include `flow-typed` type definition in `npm` package distribution

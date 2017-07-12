@@ -1,26 +1,12 @@
-// TODO: This could probably live in configuration files
-const apiBaseUrl = {
-  staging: 'https://s-api.init.ai',
-  production: 'https://api.init.ai',
-}
-
-const pusherAppKey = {
-  staging: 'ce5c19b1b1625e9abace',
-  production: '843e8669f81757d7abc3',
-}
-
-// Destructure API and NODE_ENV for use in fallback/profiles declared above
-const { API = 'staging' } = process.env
 const {
-  API_BASE_URL = apiBaseUrl[API],
-  NODE_ENV = 'development',
-  PUSHER_APP_KEY = pusherAppKey[API],
+  API_BASE_URL = 'https://api.init.ai',
+  PUSHER_APP_KEY = '843e8669f81757d7abc3'
 } = process.env
 
 const VERSION = require('../package.json').version
 
 function getEnvironmentsMap() {
-  return { API_BASE_URL, NODE_ENV, PUSHER_APP_KEY, VERSION }
+  return { API_BASE_URL, PUSHER_APP_KEY, VERSION }
 }
 
 // This is the Object that will be returned to the DefinePlugin

@@ -491,10 +491,8 @@ yarn dev
 
 The following environment variables are supported:
 
-* `NODE_ENV` - `staging | production`
-* `API_BASE_URL` – The protocol, host, and port for your API endpoint
+* `API_BASE_URL` – The protocol, host, and port for your API endpoint. Defaults to `https://api.init.ai`
 * `PUSHER_APP_KEY` – A Pusher application key
-
 
 ### Building
 
@@ -525,8 +523,7 @@ yarn test:watch
 Depending on your use case, it can often be helpful to develop against a local copy of `initai-js`. Since the default exports for this library are the artifats built to `dist`, you will need to use [linking](https://yarnpkg.com/en/docs/cli/link) and a specific development task to build to `dist` on change.
 
 ```bash
-yarn link && \
-API=production yarn dev:linked
+yarn link && yarn dev:linked
 ```
 
 and then in your target project run:
