@@ -1,4 +1,4 @@
-# UNRELEASED
+# 0.0.6 / 2017-07-25
 
 * Allow custom `baseUrl` and `pusherAppKey` in client configurations
 
