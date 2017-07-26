@@ -16,6 +16,7 @@ import validateConfiguration from './validateConfiguration'
 export class MonitorClient {
   bus: Map<string, Function[]>
   userId: string
+  pusherAppKey: string
   pusherClient: PusherClient
   pusherChannel: PusherChannel
   apiClient: APIClientInterface
@@ -23,6 +24,8 @@ export class MonitorClient {
   constructor(config: MonitorConfig) {
     this.apiClient = config.apiClient
     this.userId = config.userId
+    // $FlowFixMe: Add typings to process.env
+    this.pusherAppKey = config.pusherAppKey || process.env.PUSHER_APP_KEY
 
     this.configurePusherClient()
     this.subscribeToChannel()
@@ -31,7 +34,7 @@ export class MonitorClient {
   }
 
   configurePusherClient() {
-    this.pusherClient = new Pusher(process.env.PUSHER_APP_KEY, {
+    this.pusherClient = new Pusher(this.pusherAppKey, {
       authorizer: channel => {
         return {
           authorize: (socketId, callback) => {

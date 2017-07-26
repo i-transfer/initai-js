@@ -18,7 +18,7 @@ export class APIClient implements APIClientInterface {
 
   constructor(config: APIClientConfig) {
     // $FlowFixMe: Add typings to process.env
-    this.baseUrl = process.env.API_BASE_URL
+    this.baseUrl = config.baseUrl || process.env.API_BASE_URL
     this.token = config.token
   }
 

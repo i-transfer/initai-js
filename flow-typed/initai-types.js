@@ -2,6 +2,7 @@
 
 /* API client */
 declare type APIClientConfig = {
+  baseUrl?: string,
   token: string
 }
 
@@ -89,6 +90,7 @@ declare type GenericAPIError = {
 /* Monitor client */
 declare type MonitorConfig = {
   apiClient: APIClientInterface,
+  pusherAppKey?: string,
   userId: string
 }
 

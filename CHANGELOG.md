@@ -1,3 +1,7 @@
+# UNRELEASED
+
+* Allow custom `baseUrl` and `pusherAppKey` in client configurations
+
 # 0.0.5 / 2017-07-12
 
 * Expose envrionment configuration via `API_BASE_URL`
