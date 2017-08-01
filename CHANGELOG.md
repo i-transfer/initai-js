@@ -1,3 +1,7 @@
+# UNRELEASED
+
+* Declare unminified file as `main` in `package.json`
+
 # 0.0.6 / 2017-07-25
 
 * Allow custom `baseUrl` and `pusherAppKey` in client configurations
