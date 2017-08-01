@@ -1,4 +1,4 @@
-# UNRELEASED
+# 0.0.7 / 2017-08-01
 
 * Declare unminified file as `main` in `package.json`
 
