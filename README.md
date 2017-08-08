@@ -4,7 +4,7 @@
 [![NPM version](https://img.shields.io/npm/v/initai-js.svg)](https://www.npmjs.com/package/initai-js)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](#badge)
 
-A JavaScript library for building rich experiences on top of the [Init.ai](https://init.ai) platform.
+A JavaScript library for building browser and Node.js based experiences on top of the [Init.ai](https://init.ai) platform.
 
 This library is in an early phase of development, but is suitable for production use. Please feel free to file any [issues](https://github.com/initai/initai-js/issues) or submit a [pull request](#contributing).
 
@@ -18,6 +18,7 @@ This library is in an early phase of development, but is suitable for production
 * [Using initai-js](#using-initai-js)
   + [Installation](#installation)
   + [Browser support](#browser-support)
+  + [Node.js support](#nodejs-support)
   + [API Client](#api-client)
     + [Initialization](#api-client-initialization)
     + [Methods](#api-client-methods)
@@ -70,6 +71,7 @@ createMonitorClient({ apiClient, userId: '123' }).then(monitorClient => {
 
 * [Installation](#installation)
 * [Browser support](#browser-support)
+* [Node.js support](#nodejs-support)
 * [API Client](#api-client)
   * [Initialization](#api-client-initialization)
   * [Methods](#api-client-methods)
@@ -127,6 +129,10 @@ This library is developed for use in modern browsers. Currently, we support:
 * Microsoft Edge (latest)
 
 While the library will likely work for more browsers and mobile devices, it is not currently tested for those scenarios.
+
+## Node.js support
+
+This library supports Node.js. It is recommended that you use version [8.x](https://github.com/nodejs/LTS#lts-schedule1) or later.
 
 ## API Client
 

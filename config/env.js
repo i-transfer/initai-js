@@ -1,6 +1,6 @@
 const {
   API_BASE_URL = 'https://api.init.ai',
-  PUSHER_APP_KEY = '843e8669f81757d7abc3'
+  PUSHER_APP_KEY = '843e8669f81757d7abc3',
 } = process.env
 
 const VERSION = require('../package.json').version
