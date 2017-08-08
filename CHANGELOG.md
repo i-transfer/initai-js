@@ -1,4 +1,4 @@
-# UNRELEASED
+# 0.0.8 / 2017-08-08
 
 * Add Node.js support
 
