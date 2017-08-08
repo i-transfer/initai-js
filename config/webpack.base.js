@@ -14,6 +14,14 @@ const config = {
 
   module: {
     rules: [
+      // Suppress:
+      // WARNING in ./node_modules/encoding/lib/iconv-loader.js
+      // 9:12-34 Critical dependency: the request of a dependency is an expression
+      // via: https://github.com/webpack/webpack/issues/3078
+      {
+        test: path.resolve(__dirname, '../node_modules/encoding/lib/iconv-loader.js'),
+        use: 'null-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
