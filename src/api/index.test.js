@@ -72,6 +72,55 @@ describe('APIClient', () => {
   })
 
   describe('sendMessage', () => {
+    it('applies conversationId', () => {
+      const fakeToken = v4()
+      const apiClient = new APIClient({ token: fakeToken })
+      const fakeUserId = v4()
+      const fakeConversationId = v4()
+      const url = `${apiClient.getBaseUrl()}/v1/users/${fakeUserId}/conversations/${fakeConversationId}/messages`
+
+      const messageSuccessBody = {
+        content: 'Test message',
+        content_type: 'text',
+        created_at: '2017-06-21T15:01:09.612765Z',
+        direction: 'in',
+        id: 'e5f7608d-3117-4d26-6194-cc8540227f87',
+        sender_role: 'end-user',
+        sender_type: 'human',
+        source_type: 'ip',
+        updated_at: '2017-06-21T15:01:09.612765Z',
+      }
+
+      const fakeMesageRequest = {
+        content: 'Test message',
+        contentType: 'text',
+        conversationId: fakeConversationId,
+        userId: fakeUserId,
+      }
+
+      fetchMock.mock(url, {
+        method: 'POST',
+        body: messageSuccessBody,
+      })
+
+      const result = apiClient.sendMessage(fakeMesageRequest)
+      const lastCallConfig = fetchMock.lastCall(url)[1]
+
+      expect(lastCallConfig.headers).toEqual({
+        authorization: `Bearer ${fakeToken}`,
+      })
+
+      expect(lastCallConfig.body).toEqual(
+        JSON.stringify({
+          content_type: 'text',
+          content: 'Test message',
+          sender_role: 'end-user',
+        })
+      )
+
+      return expect(result).resolves.toEqual(messageSuccessBody)
+    })
+
     it('sends a text message', () => {
       const fakeToken = v4()
       const apiClient = new APIClient({ token: fakeToken })

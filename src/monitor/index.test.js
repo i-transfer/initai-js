@@ -136,27 +136,12 @@ describe('MonitorClient', () => {
   })
 
   describe('handleNewSuggestions', () => {
-    it('fetches suggested messages via API Client', () => {
-      const fakeAPIClient = getFakeAPIClient()
-      const fetchSuggestionsStub = jest.spyOn(fakeAPIClient, 'fetchSuggestions')
-      const fakeContext = {
-        apiClient: fakeAPIClient,
-        userId: v4(),
-        trigger: jest.fn(),
-      }
-
-      MonitorClient.prototype.handleNewSuggestions.call(fakeContext)
-
-      expect(fetchSuggestionsStub).toHaveBeenCalledWith(fakeContext.userId)
-    })
-
     it('triggers `suggestions:new`', done => {
       const fakeAPIClient = getFakeAPIClient()
-      const fakeSuggestionsPayload = getFakeSuggestionsPayload()
-
-      jest
-        .spyOn(fakeAPIClient, 'fetchSuggestions')
-        .mockReturnValue(Promise.resolve(fakeSuggestionsPayload))
+      const fakeSuggestionsPayload = {
+        conversation_id: v4(),
+        remote_conversation_id: null,
+      }
 
       const fakeContext = {
         apiClient: fakeAPIClient,
@@ -164,7 +149,10 @@ describe('MonitorClient', () => {
         trigger: jest.fn(),
       }
 
-      MonitorClient.prototype.handleNewSuggestions.call(fakeContext)
+      MonitorClient.prototype.handleNewSuggestions.call(
+        fakeContext,
+        fakeSuggestionsPayload
+      )
 
       setImmediate(() => {
         try {

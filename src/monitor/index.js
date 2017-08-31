@@ -83,13 +83,11 @@ export class MonitorClient {
     this.pusherChannel.bind('suggestions:new', this.handleNewSuggestions, this)
   }
 
-  handleNewSuggestions() {
-    this.apiClient
-      .fetchSuggestions(this.userId)
-      .then(payload => {
-        this.trigger('suggestions:new', payload)
-      })
-      .catch(error => console.error(`[initai-js:error]: ${error.message}`))
+  handleNewSuggestions(payload: {
+    conversation_id: string,
+    remote_conversation_id: ?string,
+  }) {
+    this.trigger('suggestions:new', payload)
   }
 
   trigger(eventName: string, payload: any) {

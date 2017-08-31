@@ -1,3 +1,9 @@
+# UNRELEASED
+
+* Add ability to provide conversation IDs for messaging management
+  * Deliver `conversation_id` and `remote_conversation_id` only to `suggestions:new` monitor event
+  * Accept `conversationId` in `fetchMessages`, `sendMessage`, and `fetchSuggestions`
+
 # 0.0.8 / 2017-08-08
 
 * Add Node.js support

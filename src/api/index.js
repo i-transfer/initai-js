@@ -44,10 +44,16 @@ export class APIClient implements APIClientInterface {
       })
     }
 
-    let { userId, contentType, content, senderRole } = messageConfig
+    let {
+      userId,
+      contentType,
+      content,
+      senderRole,
+      conversationId = 'current',
+    } = messageConfig
 
     const url = `${this
-      .baseUrl}/v1/users/${userId}/conversations/current/messages`
+      .baseUrl}/v1/users/${userId}/conversations/${conversationId}/messages`
 
     if (contentType === 'image') {
       content = decamelizeKeys(content)
@@ -77,7 +83,10 @@ export class APIClient implements APIClientInterface {
     })
   }
 
-  fetchMessages(userId: string): Promise<FetchMessagesResult> {
+  fetchMessages(
+    userId: string,
+    conversationId?: string
+  ): Promise<FetchMessagesResult> {
     if (!isValidString(userId)) {
       logError({
         message:
@@ -89,9 +98,21 @@ export class APIClient implements APIClientInterface {
       })
     }
 
+    if (conversationId && !isValidString(conversationId)) {
+      logError({
+        message:
+          'Invalid fetchMessages argument\n\nconversationId must be a valid String if provided',
+      })
+      return Promise.reject({
+        message: 'Could not fetch messages',
+        type: ErrorTypes.VALIDATION_FAILURE,
+      })
+    }
+
     // TODO: Pagination?
     const url = `${this
-      .baseUrl}/v1/users/${userId}/conversations/current/messages`
+      .baseUrl}/v1/users/${userId}/conversations/${conversationId ||
+      'current'}/messages`
 
     return fetch(url, {
       headers: this.getAuthHeaders(),
@@ -110,7 +131,10 @@ export class APIClient implements APIClientInterface {
     })
   }
 
-  fetchSuggestions(userId: string): Promise<SuggestionsResult> {
+  fetchSuggestions(
+    userId: string,
+    conversationId?: string
+  ): Promise<SuggestionsResult> {
     if (!isValidString(userId)) {
       logError({
         message:
@@ -123,7 +147,8 @@ export class APIClient implements APIClientInterface {
     }
 
     const url = `${this
-      .baseUrl}/v1/users/${userId}/conversations/current/suggestions/current`
+      .baseUrl}/v1/users/${userId}/conversations/${conversationId ||
+      'current'}/suggestions/current`
 
     return fetch(url, {
       headers: this.getAuthHeaders(),

@@ -63,7 +63,9 @@ import { createAPIClient, createMonitorClient } from 'initai-js'
 const apiClient = createAPIClient({ token: 'my-token' })
 
 createMonitorClient({ apiClient, userId: '123' }).then(monitorClient => {
-  monitorClient.on('suggestestions:new', ({ payload }) => console.log(payload.messages))
+  monitorClient.on('suggestestions:new', payload => {
+    console.log(payload) // {conversation_id: '123', remote_conversation_id: null}
+  })
 })
 ```
 
@@ -170,6 +172,7 @@ An object describing the message to send.
 * `content`: _required_ – A string (if `contentType` is `text`) or object representing the message content to send
 * `contentType`: _required_ - A string representing a valid message type: `text`, `image`, or `postback-action`
   * See [the docs](https://docs.init.ai/docs/sending-responses#section-sending-text-with-suggested-quick-replies) for more information on using "quick replies" and postback actions.
+* `conversationId`: - A string representing the Init.ai database id or the custom `remote_conversation_id` from an external system such as a CRM. By default, this value will fall back to `current`.
 * `senderRole`: Default `end-user` – A string representing the message sender: `agent`, `app`, `end-user`
 
 ##### Handling responses
@@ -230,13 +233,17 @@ apiClient.sendMessage({
 })
 ```
 
-#### `fetchMessages(userId: string): Promise<FetchMessagesResult>`
+#### `fetchMessages(userId: string, conversationId?: string): Promise<FetchMessagesResult>`
 
 Fetch messages for the provided user's current conversation.
 
 ##### `userId`
 
 The Init.ai database id or the custom `remote_id` associated with the user
+
+##### `conversationId`
+
+The Init.ai database id or the custom `remote_conversation_id` from an external system such as a CRM. By default, this value will fall back to `current`.
 
 ##### Handling responses
 
@@ -280,13 +287,17 @@ apiClient.fetchMessages('123').then(({ messages }) => {
 }).catch(console.log)
 ```
 
-#### `fetchSuggestions(userId: string): Promise<SuggestionsResult>`
+#### `fetchSuggestions(userId: string, conversationId?: string): Promise<SuggestionsResult>`
 
 Fetch the _latest_ message suggestions for the provided user's conversation
 
 ##### `userId`
 
 The Init.ai database id or the custom `remote_id` associated with the user
+
+##### `conversationId`
+
+The Init.ai database id or the custom `remote_conversation_id` from an external system such as a CRM. By default, this value will fall back to `current`.
 
 ##### Handling responses
 
@@ -411,7 +422,7 @@ Subscribe to conversation event.
 ##### Example usage
 
 ```js
-const handleSuggestions = (payload) => console.log('Suggestions:', payload)
+const handleSuggestions = payload => console.log('Suggestions:', payload)
 
 monitorClient.on('suggestions:new', handleSuggestions)
 ```
@@ -428,7 +439,7 @@ Unsubscribe from a conversation event.
 ##### Example usage
 
 ```js
-const handleSuggestions = (payload) => console.log('Suggestions:', payload)
+const handleSuggestions = payload => console.log('Suggestions:', payload)
 
 monitorClient.on('suggestions:new', handleSuggestions)
 
@@ -442,7 +453,7 @@ Destroy the `monitorClient` instance and remove all subscriptions. This is usefu
 ##### Example usage
 
 ```js
-const handleSuggestions = (payload) => console.log('Suggestions:', payload)
+const handleSuggestions = payload => console.log('Suggestions:', payload)
 
 monitorClient.on('suggestions:new', handleSuggestions)
 
@@ -459,25 +470,9 @@ Triggered whenever new suggestions are added to the conversation..
 ##### Example payload
 
 ```js
-// Success
 {
   conversation_id: '123-456',
-  suggestions: [
-    ...,
-
-    {
-      content: { text: 'Some message content' },
-      content_type: 'text',
-      metadata: {}, // Arbitrary metadata sent with the request
-      nlp_metadata: {}, // An Object containing NLP results (auto-suggestions only)
-      source_type: 'logic_invocation', // 'api', 'logic_invocation', or 'auto'
-      suggestion_type: 'message',
-      suggestion_id: '456',
-      data: {}, // Data used to populate templated suggestions
-    },
-
-    ....
-  ]
+  remote_conversation_id: null // Will be a string if remote_conversation_id has been previously set
 }
 ```
 

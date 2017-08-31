@@ -8,8 +8,8 @@ declare type APIClientConfig = {
 
 declare interface APIClientInterface {
   baseUrl: string,
-  fetchMessages(userId: string): Promise<FetchMessagesResult>,
-  fetchSuggestions(userId: string): Promise<SuggestionsResult>,
+  fetchMessages(userId: string, conversationId?: string): Promise<FetchMessagesResult>,
+  fetchSuggestions(userId: string, conversationId?: string): Promise<SuggestionsResult>,
   getAuthHeaders(): { [authorization: string]: string },
   getBaseUrl(): string,
   sendMessage(MessageConfig): Promise<SendMessageResult>,
@@ -24,6 +24,7 @@ declare type SenderRole = 'agent' | 'app' | 'end-user'
 declare type TextMessage = {
   content: string,
   contentType: 'text',
+  conversationId: string,
   senderRole: SenderRole, // default 'end-user'
   userId: string,
 }
@@ -35,6 +36,7 @@ declare type ImageMessage = {
     mimeType: 'image/png' | string
   },
   contentType: 'image',
+  conversationId: string,
   senderRole: SenderRole, // default 'end-user'
   userId: string,
 }
@@ -46,6 +48,7 @@ declare type PostbackMessage = {
     stream: string,
   },
   contentType: 'postback-action',
+  conversationId: string,
   senderRole: SenderRole, // default 'end-user'
   userId: string,
 }
