@@ -1,4 +1,4 @@
-# UNRELEASED
+# 0.0.9 / 2017-08-31
 
 * Add ability to provide conversation IDs for messaging management
   * Deliver `conversation_id` and `remote_conversation_id` only to `suggestions:new` monitor event
